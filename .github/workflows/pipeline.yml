@@ -1,0 +1,13 @@
+name: Pipeline
+on: push
+
+jobs:
+  test:
+    uses: './.github/workflows/moduletest.yml'
+  lint:
+    needs: test
+    uses: './.github/workflows/linting.yml'
+  build:
+    needs: lint
+    uses: './.github/workflows/build.yml'
+      
