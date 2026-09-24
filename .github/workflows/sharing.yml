@@ -1,0 +1,18 @@
+name: Sharing
+on: workflow_dispatch
+
+jobs:
+  create-name:
+    runs-on: ubuntu-latest
+    outputs:
+      my_user_name: ${{steps.username.outputs.uname}}
+    steps:
+      - id: username
+        run: echo 'uname=Toni' >> $GITHUB_OUTPUT
+  result:
+    needs: create-name
+    runs-on: ubuntu-latest
+    env:
+      MY_UNAME: ${{needs.create-name.outputs.my_user_name}}
+    steps:
+      - run: echo 'Sinun nimesi on $MY_UNAME'
