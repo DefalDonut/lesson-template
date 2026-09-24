@@ -15,4 +15,4 @@ jobs:
     env:
       MY_UNAME: ${{needs.create-name.outputs.my_user_name}}
     steps:
-      - run: echo 'Sinun nimesi on $MY_UNAME'
+      - run: echo "Sinun nimesi on $MY_UNAME"
