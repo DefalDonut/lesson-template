@@ -1,5 +1,7 @@
 name: Pipeline
 on: push
+permissions: 
+  contents: write
 
 jobs:
   test:
