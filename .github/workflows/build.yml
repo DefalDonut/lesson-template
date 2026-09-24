@@ -1,0 +1,22 @@
+name: Build app
+on: workflow_dispatch
+permissions: 
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Dependencies
+        run: npm ci
+      - name: Build
+        run: |
+            npm run build
+      - name: Push-changes
+        run: |
+            git config --global user.name 'DefalDonut'
+            git config --global user.email 'tsaily24@students.oamk.fi'
+            git add .
+            git commit -m 'Production build'
+            git push
