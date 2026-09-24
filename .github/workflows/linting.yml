@@ -1,5 +1,7 @@
 name: Linting
 on: workflow_dispatch
+permissions: 
+  contents: write
 
 jobs:
   linting:
@@ -12,3 +14,9 @@ jobs:
         run: |
             npm run lint > lint-info.md
             cat lint-info.md
+      - name: Commit-changes
+        run: |
+            git config --global user.name 'DefalDonut'
+            git config --global user.email 'tsaily24@students.oamk.fi'
+            git add .
+            git commit -m 'Linting report'
