@@ -1,0 +1,15 @@
+name: Module tests
+on: workflow_dispatch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@7
+      - name: Dependencies
+        run: npm ci
+      - name: Moduletests
+        run: npm test
+      - name: Test_outcome
+        if: ${{success()}}
+        run: echo "TEST WAS SUCCESSFUL!"
